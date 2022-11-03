@@ -1,12 +1,15 @@
 <template>
-    <OuterFrame :theme="'forecast'">왼쪽 컴포넌트</OuterFrame>
+    <OuterFrame :theme="'forecast'">
+        <Header />
+    </OuterFrame>
 </template>
 
 <script>
 import OuterFrame from '~/components/atoms/OuterFrame.vue';
+import Header from '~/components/molecules/Header.vue';
 
 export default {
-    components: { OuterFrame },
+    components: { OuterFrame, Header },
 };
 </script>
 

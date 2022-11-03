@@ -1,5 +1,7 @@
 <template>
-    <div :data-theme="theme" class="outer-frame"></div>
+    <div :data-theme="theme" class="outer-frame">
+        <slot></slot>
+    </div>
 </template>
 
 <script>
@@ -20,8 +22,10 @@ export default {
 @import '~/assets/styles/main.scss';
 
 .outer-frame {
-    width: 370px;
-    height: 680px;
+    width: 304px;
+    height: 600px;
+
+    padding: 40px;
 
     border-radius: 30px;
     box-shadow: 5px 5px 5px gray;
