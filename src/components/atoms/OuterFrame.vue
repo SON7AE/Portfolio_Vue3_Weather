@@ -22,9 +22,14 @@ export default {
 @import '~/assets/styles/main.scss';
 
 .outer-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     width: 304px;
     height: 600px;
 
+    gap: 32px;
     padding: 40px;
 
     border-radius: 30px;
