@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <span class="main__temperature">-2&#8451;</span>
+        <span class="main__temperature">-2<span style="font-size: 44px">&#8451;</span></span>
         <img src="~/assets/images/10d.png" alt="" class="main__weather-image" />
         <div class="main__representive-weather">
             <detailWeather />
@@ -31,20 +31,20 @@ export default {
     gap: 16px;
 
     &__temperature {
-        font-family: 'SUIT-Regular';
+        font-family: 'BMJUA';
         font-weight: 700;
         font-size: 52px;
 
         color: $color-white-000;
     }
     &__weather-image {
-        height: 188px;
+        height: 180px;
     }
     &__representive-weather {
         display: flex;
         align-items: center;
 
-        gap: 56px;
+        gap: 62px;
 
         margin-top: 8px;
     }
