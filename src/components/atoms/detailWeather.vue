@@ -31,12 +31,14 @@ export default {
     gap: 8px;
 
     &__label {
+        font-family: 'Noto Sans KR', sans-serif;
         font-size: 16px;
         font-weight: 500;
         color: $color-blue-200;
     }
     &__value {
-        font-size: 20px;
+        font-family: 'TmoneyRoundWindExtraBold';
+        font-size: 18px;
         font-weight: 700;
         color: $color-white-000;
     }

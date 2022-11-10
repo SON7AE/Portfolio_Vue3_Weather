@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <span class="main__temperature">-2<span style="font-size: 44px">&#8451;</span></span>
+        <span class="main__temperature">-2<span style="font-size: 44px; font-family: 'TmoneyRoundWindExtraBold'">&#8451;</span></span>
         <img src="~/assets/images/10d.png" alt="" class="main__weather-image" />
         <div class="main__representive-weather">
             <detailWeather />
