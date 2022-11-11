@@ -2,7 +2,7 @@
     <div :data-theme="theme" class="filter-button">
         <span :data-theme="theme" class="option">Forecast</span>
         <span :data-theme="theme" class="option">Air Quality</span>
-        <div :data-theme="theme" class="filter-button__active"></div>
+        <div class="filter-button__"></div>
     </div>
 </template>
 
@@ -15,10 +15,6 @@ export default {
             required: false,
             /**@type {Theme} */
             default: 'forecast',
-        },
-        labels: {
-            type: Array,
-            required: true,
         },
     },
 };
@@ -37,29 +33,11 @@ export default {
 
     border-radius: 10px;
 
-    position: relative;
-
     &[data-theme='forecast'] {
         background-color: $color-button-background-blue;
     }
     &[data-theme='airquality'] {
         background-color: $color-button-background-red;
-    }
-    &__active {
-        position: absolute;
-
-        width: 50%;
-        height: 100%;
-
-        &[data-theme='forecast'] {
-            background-color: $color-blue-000;
-            border-radius: 10px;
-        }
-        &[data-theme='airquality'] {
-            background-color: $color-red-000;
-            border-radius: 10px;
-            right: 0;
-        }
     }
 }
 .option {
