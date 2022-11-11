@@ -27,6 +27,7 @@ export default {
     align-items: center;
 
     width: 280px;
+    min-width: 280px;
     height: 600px;
 
     gap: 32px;

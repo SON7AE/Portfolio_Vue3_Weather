@@ -36,6 +36,7 @@ export default {
         font-size: 52px;
 
         color: $color-white-000;
+        margin-top: -8px;
     }
     &__weather-image {
         height: 180px;

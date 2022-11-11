@@ -39,7 +39,7 @@ export default {
     &__value {
         font-family: 'TmoneyRoundWindExtraBold';
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 500;
         color: $color-white-000;
     }
 }

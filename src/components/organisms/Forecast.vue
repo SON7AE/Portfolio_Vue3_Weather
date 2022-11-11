@@ -1,7 +1,7 @@
 <template>
     <OuterFrame :theme="'forecast'">
         <Header />
-        <FilterButton :theme="'forecast'" />
+        <FilterButton :theme="'forecast'" :labels="labels" />
         <Main />
     </OuterFrame>
 </template>
@@ -15,6 +15,11 @@ import Main from '~/components/molecules/forecast/Main.vue';
 
 export default {
     components: { OuterFrame, FilterButton, Header, Main },
+    setup() {
+        const labels = ['Forecast', 'Air Quality'];
+
+        return { labels };
+    },
 };
 </script>
 
