@@ -35,7 +35,7 @@ export default {
         color: $color-blue-400;
     }
     &[data-theme='airquality'] {
-        color: $color-red-000;
+        color: $color-red-300;
     }
 }
 </style>

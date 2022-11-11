@@ -1,11 +1,16 @@
 <template>
     <div class="main">
         <span class="main__description">매우 나쁨</span>
+        <AirqualityWeatherCard />
     </div>
 </template>
 
 <script>
-export default {};
+import AirqualityWeatherCard from '~/components/molecules/airquality/WeatherCard.vue';
+
+export default {
+    components: { AirqualityWeatherCard },
+};
 </script>
 
 <style lang="scss" scoped>

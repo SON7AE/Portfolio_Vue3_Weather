@@ -2,7 +2,7 @@
     <OuterFrame :theme="'airquality'">
         <Header />
         <FilterButton :theme="'airquality'" />
-        <ForecastMain />
+        <AirqualityMain />
     </OuterFrame>
 </template>
 
@@ -11,10 +11,10 @@ import OuterFrame from '~/components/atoms/OuterFrame.vue';
 import FilterButton from '~/components/atoms/FilterButton.vue';
 
 import Header from '~/components/molecules/Header.vue';
-import ForecastMain from '~/components/molecules/airquality/Main.vue';
+import AirqualityMain from '~/components/molecules/airquality/Main.vue';
 
 export default {
-    components: { OuterFrame, FilterButton, Header, ForecastMain },
+    components: { OuterFrame, FilterButton, Header, AirqualityMain },
 };
 </script>
 

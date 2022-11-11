@@ -7,16 +7,16 @@
             <detailWeather />
             <detailWeather />
         </div>
-        <WeatherCard />
+        <ForecastWeatherCard />
     </div>
 </template>
 
 <script>
 import detailWeather from '~/components/atoms/detailWeather.vue';
-import WeatherCard from '~/components/molecules/forecast/WeatherCard.vue';
+import ForecastWeatherCard from '~/components/molecules/forecast/WeatherCard.vue';
 
 export default {
-    components: { detailWeather, WeatherCard },
+    components: { detailWeather, ForecastWeatherCard },
 };
 </script>
 
