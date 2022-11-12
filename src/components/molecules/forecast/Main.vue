@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <span class="main__temperature">-2<span style="font-size: 44px; font-family: 'TmoneyRoundWindExtraBold'">&#8451;</span></span>
+        <span class="main__temperature">-2<span style="font-size: 46px; font-family: 'TmoneyRoundWindExtraBold'">&#8451;</span></span>
         <img src="~/assets/images/10d.png" alt="" class="main__weather-image" />
         <div class="main__representive-weather">
             <detailWeather />
@@ -33,7 +33,7 @@ export default {
     &__temperature {
         font-family: 'BMJUA';
         font-weight: 700;
-        font-size: 52px;
+        font-size: 56px;
 
         color: $color-white-000;
         margin-top: -8px;

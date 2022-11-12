@@ -1,2 +1,10 @@
 @import './color.scss';
 @import './font.scss';
+
+body {
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
