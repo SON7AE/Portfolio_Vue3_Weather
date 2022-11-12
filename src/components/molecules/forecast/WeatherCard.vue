@@ -5,20 +5,20 @@
             <BasicButton :label="'이번 주 날씨 보기'" :data-theme="'forecast'" />
         </div>
         <div class="weather-card__info-box">
-            <TimelyWeather class="weather-card__info-box__timely-weather" />
-            <TimelyWeather />
-            <TimelyWeather />
-            <TimelyWeather />
+            <ForecastTimelyWeather class="weather-card__info-box__timely-weather" />
+            <ForecastTimelyWeather />
+            <ForecastTimelyWeather />
+            <ForecastTimelyWeather />
         </div>
     </div>
 </template>
 
 <script>
 import BasicButton from '~/components/atoms/BasicButton.vue';
-import TimelyWeather from './TimelyWeather.vue';
+import ForecastTimelyWeather from '~/components/molecules/forecast/TimelyWeather.vue';
 
 export default {
-    components: { BasicButton, TimelyWeather },
+    components: { BasicButton, ForecastTimelyWeather },
 };
 </script>
 

@@ -31,5 +31,13 @@ export default {
         color: $color-white-000;
         margin-top: -8px;
     }
+    &__representive-weather {
+        display: flex;
+        align-items: center;
+
+        gap: 62px;
+
+        margin-top: 8px;
+    }
 }
 </style>
