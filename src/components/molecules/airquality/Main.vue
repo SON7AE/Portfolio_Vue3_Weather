@@ -2,14 +2,16 @@
     <div class="main">
         <span class="main__description">매우 나쁨</span>
         <AirqualityWeatherCard />
+        <Map />
     </div>
 </template>
 
 <script>
 import AirqualityWeatherCard from '~/components/molecules/airquality/WeatherCard.vue';
+import Map from '~/components/atoms/Map.vue';
 
 export default {
-    components: { AirqualityWeatherCard },
+    components: { AirqualityWeatherCard, Map },
 };
 </script>
 
