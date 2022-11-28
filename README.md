@@ -15,3 +15,9 @@
 ### 3. 표준 날짜 - Dayjs 라이브러리 사용
 
 #### `npm install dayjs`
+
+---
+
+### 4. API 통신 - axios 라이브러리 사용
+
+#### `npm install axios`

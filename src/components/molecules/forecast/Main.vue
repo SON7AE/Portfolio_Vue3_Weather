@@ -13,35 +13,21 @@
 import detailWeather from '~/components/atoms/detailWeather.vue';
 import ForecastWeatherCard from '~/components/molecules/forecast/WeatherCard.vue';
 
-import { reactive } from '@vue/reactivity';
+import { ref } from '@vue/reactivity';
+import { storeToRefs } from 'pinia';
 import { useStore } from '~/store/index';
 
 export default {
     components: { detailWeather, ForecastWeatherCard },
     setup() {
         const store = useStore();
+        store.FETCH_OPENWEATHER_API();
 
-        const currentTemp = store.nCurrentTemp; // 현재 온도
-        const currentHumidity = store.nCurrentHumidity; // 현재 습도
-        const currentWindSpeed = store.nCurrentWindSpeed; // 현재 풍속
-        const currentWindChill = store.nCurrentWindChill; // 현재 체감온도
+        const { nCurrentTemp, sWeatherIcon, aWeatherInfos } = storeToRefs(store);
 
-        const weatherInfos = reactive([
-            {
-                label: '습도',
-                value: currentHumidity + '%',
-            },
-            {
-                label: '풍속',
-                value: currentWindSpeed + 'm/s',
-            },
-            {
-                label: '체감온도',
-                value: currentWindChill + '도',
-            },
-        ]);
-
-        const weatherIcon = store.sWeatherIcon; // 현재 날씨아이콘
+        const currentTemp = ref(nCurrentTemp); // 현재 온도
+        const weatherIcon = ref(sWeatherIcon); // 현재 날씨아이콘
+        const weatherInfos = ref(aWeatherInfos); // 현재 디테일 날씨 데이터 배열
 
         return {
             store,
