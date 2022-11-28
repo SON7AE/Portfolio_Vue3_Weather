@@ -1,19 +1,15 @@
 <template>
     <div class="detail-weather">
-        <span class="detail-weather__label">습도</span>
-        <span class="detail-weather__value">88%</span>
+        <span class="detail-weather__label">{{ info.label }}</span>
+        <span class="detail-weather__value">{{ info.value }}</span>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        label: {
-            type: String,
-            required: true,
-        },
-        value: {
-            type: String,
+        info: {
+            type: Array,
             required: true,
         },
     },
@@ -28,6 +24,7 @@ export default {
     flex-direction: column;
     align-items: center;
 
+    width: 60px;
     gap: 8px;
 
     &__label {

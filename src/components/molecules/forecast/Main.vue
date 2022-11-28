@@ -1,11 +1,9 @@
 <template>
     <div class="main">
-        <span class="main__temperature">-2<span style="font-size: 46px; font-family: 'TmoneyRoundWindExtraBold'">&#8451;</span></span>
-        <img src="~/assets/images/10d.png" alt="" class="main__weather-image" />
+        <span class="main__temperature">{{ currentTemp }}<span style="font-size: 46px; font-family: 'TmoneyRoundWindExtraBold'">&#8451;</span></span>
+        <img :src="`src/assets/images/${weatherIcon}.png`" alt="" class="main__weather-image" />
         <div class="main__representive-weather">
-            <detailWeather />
-            <detailWeather />
-            <detailWeather />
+            <detailWeather v-for="info in weatherInfos" :key="info.label" :info="info" />
         </div>
         <ForecastWeatherCard />
     </div>
@@ -15,8 +13,43 @@
 import detailWeather from '~/components/atoms/detailWeather.vue';
 import ForecastWeatherCard from '~/components/molecules/forecast/WeatherCard.vue';
 
+import { reactive } from '@vue/reactivity';
+import { useStore } from '~/store/index';
+
 export default {
     components: { detailWeather, ForecastWeatherCard },
+    setup() {
+        const store = useStore();
+
+        const currentTemp = store.nCurrentTemp; // 현재 온도
+        const currentHumidity = store.nCurrentHumidity; // 현재 습도
+        const currentWindSpeed = store.nCurrentWindSpeed; // 현재 풍속
+        const currentWindChill = store.nCurrentWindChill; // 현재 체감온도
+
+        const weatherInfos = reactive([
+            {
+                label: '습도',
+                value: currentHumidity + '%',
+            },
+            {
+                label: '풍속',
+                value: currentWindSpeed + 'm/s',
+            },
+            {
+                label: '체감온도',
+                value: currentWindChill + '도',
+            },
+        ]);
+
+        const weatherIcon = store.sWeatherIcon; // 현재 날씨아이콘
+
+        return {
+            store,
+            currentTemp,
+            weatherInfos,
+            weatherIcon,
+        };
+    },
 };
 </script>
 
@@ -45,7 +78,7 @@ export default {
         display: flex;
         align-items: center;
 
-        gap: 62px;
+        gap: 50px;
 
         margin-top: 8px;
     }

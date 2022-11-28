@@ -1,14 +1,27 @@
 <template>
     <div class="header">
         <div class="header__city">
-            <span class="header__city__name">Seoul, South Korea</span>
-            <span class="header__city__time">2022년 11월 4일 금요일 오전 7시 34분</span>
+            <span class="header__city__name">{{ store.sCityName }}, South Korea</span>
+            <span class="header__city__time">{{ now }} 기준</span>
         </div>
     </div>
 </template>
 
 <script>
-export default {};
+import * as dayjs from 'dayjs';
+import { useStore } from '~/store/index';
+
+export default {
+    setup() {
+        const now = dayjs().format('YYYY년 MM월 DD일 HH시 mm분');
+        const store = useStore();
+
+        return {
+            now,
+            store,
+        };
+    },
+};
 </script>
 
 <style lang="scss" scoped>

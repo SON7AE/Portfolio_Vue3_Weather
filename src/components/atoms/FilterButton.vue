@@ -1,7 +1,7 @@
 <template>
     <div :data-theme="theme" class="filter-button">
-        <span :data-theme="theme" class="option">Forecast</span>
-        <span :data-theme="theme" class="option">Air Quality</span>
+        <span :data-theme="theme" class="option forecast">Forecast</span>
+        <span :data-theme="theme" class="option airquality">Air Quality</span>
     </div>
 </template>
 
@@ -47,14 +47,34 @@ export default {
     font-weight: 500;
     font-size: 14px;
 
-    color: $color-white-000;
+    border-radius: 10px;
     text-align: center;
 
     &[data-theme='forecast'] {
         color: $color-blue-500;
+
+        &.forecast {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 100%;
+            background-color: $color-blue-000;
+            color: $color-white-000;
+        }
     }
     &[data-theme='airquality'] {
         color: $color-red-200;
+
+        &.airquality {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 100%;
+            background-color: $color-red-000;
+            color: $color-white-000;
+        }
     }
 }
 </style>
