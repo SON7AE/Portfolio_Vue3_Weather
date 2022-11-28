@@ -5,10 +5,7 @@
             <BasicButton :label="'이번 주 날씨 보기'" :data-theme="'forecast'" />
         </div>
         <div class="weather-card__info-box">
-            <ForecastTimelyWeather class="weather-card__info-box__timely-weather" />
-            <ForecastTimelyWeather />
-            <ForecastTimelyWeather />
-            <ForecastTimelyWeather />
+            <ForecastTimelyWeather v-for="(data, index) in aTimelyWeatherDatas" :key="index" :data="data" :icon="aTimelyWeatherIcons[index]" class="weather-card__info-box__timely-weather" />
         </div>
     </div>
 </template>
@@ -17,8 +14,17 @@
 import BasicButton from '~/components/atoms/BasicButton.vue';
 import ForecastTimelyWeather from '~/components/molecules/forecast/TimelyWeather.vue';
 
+import { storeToRefs } from 'pinia';
+import { useStore } from '~/store/index';
+
 export default {
     components: { BasicButton, ForecastTimelyWeather },
+    setup() {
+        const store = useStore();
+        const { aTimelyWeatherDatas, aTimelyWeatherIcons } = storeToRefs(store);
+
+        return { aTimelyWeatherDatas, aTimelyWeatherIcons };
+    },
 };
 </script>
 

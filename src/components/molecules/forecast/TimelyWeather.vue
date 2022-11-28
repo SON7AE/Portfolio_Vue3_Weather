@@ -1,19 +1,40 @@
 <template>
     <div class="timely-weather">
-        <img src="~/assets/images/11n.png" alt="시간대별 날씨 이미지" class="timely-weather__image" />
+        <img :src="`${icon}`" alt="날씨 아이콘" class="timely-weather__image" />
         <div class="timely-weather__info">
-            <span class="timely-weather__info__time">10am</span>
-            <span class="timely-weather__info__temp">-2&#8451;</span>
+            <span class="timely-weather__info__time">{{ Unix_timeStamp(data.time) }}</span>
+            <span class="timely-weather__info__temp">{{ data.temp }}&#8451;</span>
             <span class="timely-weather__info__humidity">
                 <img src="~/assets/images/drop.png" alt="" class="timely-weather__info__humidity__image" />
-                15%
+                {{ data.humidity }}%
             </span>
         </div>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+    props: {
+        data: {
+            type: Array,
+            required: true,
+        },
+        icon: {
+            type: String,
+            required: true,
+        },
+    },
+    setup() {
+        const Unix_timeStamp = (dt) => {
+            let date = new Date(dt * 1000);
+            let hour = date.getHours().toString().padStart(2, '0');
+
+            return hour.substring(-2) + '시';
+        };
+
+        return { Unix_timeStamp };
+    },
+};
 </script>
 
 <style lang="scss" scoped>
