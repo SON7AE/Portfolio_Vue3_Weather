@@ -2,7 +2,6 @@
     <div :data-theme="theme" class="filter-button">
         <span :data-theme="theme" class="option">Forecast</span>
         <span :data-theme="theme" class="option">Air Quality</span>
-        <div class="filter-button__"></div>
     </div>
 </template>
 
@@ -17,6 +16,7 @@ export default {
             default: 'forecast',
         },
     },
+    setup() {},
 };
 </script>
 
