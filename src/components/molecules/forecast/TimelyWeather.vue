@@ -16,7 +16,7 @@
 export default {
     props: {
         data: {
-            type: Array,
+            type: Object,
             required: true,
         },
         icon: {

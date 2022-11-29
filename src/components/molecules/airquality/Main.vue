@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <span class="main__description">매우 나쁨</span>
+        <span class="main__description">{{ sWeatherStatus }}</span>
         <AirqualityWeatherCard />
         <Map />
     </div>
@@ -10,8 +10,19 @@
 import AirqualityWeatherCard from '~/components/molecules/airquality/WeatherCard.vue';
 import Map from '~/components/atoms/Map.vue';
 
+import { storeToRefs } from 'pinia';
+import { useStore } from '~/store/index';
+
 export default {
     components: { AirqualityWeatherCard, Map },
+    setup() {
+        const store = useStore();
+        store.FETCH_OPENWEATHER_API();
+
+        const { sWeatherStatus } = storeToRefs(store);
+
+        return { sWeatherStatus };
+    },
 };
 </script>
 

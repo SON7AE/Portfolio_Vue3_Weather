@@ -13,9 +13,11 @@ export const useStore = defineStore('main', {
 
         sCityName: 'Seoul', // 도시 이름
         sWeatherIcon: '01d', // 현재 날씨 아이콘
+        sWeatherStatus: '', // 현재 날씨 상태
 
         aTimelyWeather: [], // 시간대별 날씨 데이터
         aTimelyWeatherIcons: [], // 시간대별 날씨 아이콘 배열
+        aTimelyClouds: [], // 시간대별 자외선 수치 배열
     }),
     getters: {
         aWeatherInfos: (state) => [
@@ -40,6 +42,10 @@ export const useStore = defineStore('main', {
 
             return res;
         },
+        aReTimelyClouds: (state) => {
+            const res = [];
+            state.aTimelyClouds.map((item) => {});
+        },
     },
     actions: {
         async FETCH_OPENWEATHER_API() {
@@ -52,7 +58,7 @@ export const useStore = defineStore('main', {
                 const res = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
                 const now = res.data.current;
 
-                console.log(res);
+                console.log(res.data.hourly);
 
                 const icons = new Array();
                 for (let i = 0; i < 48; i++) {
@@ -62,8 +68,15 @@ export const useStore = defineStore('main', {
 
                 this.aTimelyWeatherIcons = icons;
                 this.aTimelyWeather = res.data.hourly;
+                this.aTimelyClouds = res.data.hourly.map((item) => {
+                    return item.clouds;
+                });
+
+                console.log(this.aTimelyClouds);
                 this.sWeatherIcon = now.weather[0].icon;
-                this.nCurrentTemp = Math.round(now.temp);
+                this.sWeatherStatus = now.weather[0].description;
+
+                now.this.nCurrentTemp = Math.round(now.temp);
                 this.nCurrentHumidity = now.humidity;
                 this.nCurrentWindSpeed = now.wind_speed;
                 this.nCurrentWindChill = Math.round(now.feels_like);
