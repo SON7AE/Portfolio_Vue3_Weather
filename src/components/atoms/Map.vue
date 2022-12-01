@@ -3,13 +3,16 @@
 </template>
 
 <script>
-import { onMounted } from 'vue';
-
 import KAKAO_API_KEY from '~/config/apikey.js';
 import MapPositions from '~/assets/map-positions.json';
 
+import { onMounted } from 'vue';
+import { useStore } from '~/store/index';
+
 export default {
     setup() {
+        const store = useStore();
+
         onMounted(() => {
             // 카카오 디벨로퍼 API KEY
             const API_KEY = KAKAO_API_KEY;
@@ -46,6 +49,8 @@ export default {
                 kakao.maps.event.addListener(marker, 'click', () => {
                     // 클릭한 위도, 경도 정보를 가져옵니다
                     // watch로 따로 빼지 않고, 직접 할당
+                    const res = marker.getPosition();
+                    store.FETCH_OPENWEATHER_API(res.Ma, res.La, pos.cityName);
                 });
                 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
                 // marker.setMap(null);

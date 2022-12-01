@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header__city">
-            <span class="header__city__name">{{ store.sCityName }}, South Korea</span>
+            <span class="header__city__name">{{ store.sCityName }}, Korea</span>
             <span class="header__city__time">{{ now }} 기준</span>
         </div>
     </div>

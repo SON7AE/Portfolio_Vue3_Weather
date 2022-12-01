@@ -11,7 +11,7 @@ export const useStore = defineStore('main', {
         nCurrentWindSpeed: 0, // 현재 풍속
         nCurrentWindChill: 0, // 현재 체감온도
 
-        sCityName: 'Seoul', // 도시 이름
+        sCityName: '', // 도시 이름
         sWeatherIcon: '01d', // 현재 날씨 아이콘
         sWeatherStatus: '', // 현재 날씨 상태
 
@@ -66,11 +66,11 @@ export const useStore = defineStore('main', {
         },
     },
     actions: {
-        async FETCH_OPENWEATHER_API() {
+        async FETCH_OPENWEATHER_API(nlat, nlon, city) {
             const API_KEY = '284bfdeb630520653864189833ba7c68';
 
-            let lat = this.nlatitude;
-            let lon = this.nlongitude;
+            let lat = nlat ? nlat : this.nlatitude;
+            let lon = nlon ? nlon : this.nlongitude;
 
             try {
                 const res = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
@@ -91,6 +91,7 @@ export const useStore = defineStore('main', {
                     };
                 });
 
+                this.sCityName = city ? city : 'Seoul';
                 this.sWeatherIcon = now.weather[0].icon;
                 this.sWeatherStatus = now.weather[0].description;
 
