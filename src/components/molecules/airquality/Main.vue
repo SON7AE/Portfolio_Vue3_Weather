@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <span class="main__description">{{ sWeatherStatus }}</span>
+        <span class="main__description">{{ sReWeatherStatus }}</span>
         <AirqualityWeatherCard />
         <Map />
     </div>
@@ -19,9 +19,9 @@ export default {
         const store = useStore();
         store.FETCH_OPENWEATHER_API();
 
-        const { sWeatherStatus } = storeToRefs(store);
+        const { sReWeatherStatus } = storeToRefs(store);
 
-        return { sWeatherStatus };
+        return { sReWeatherStatus };
     },
 };
 </script>

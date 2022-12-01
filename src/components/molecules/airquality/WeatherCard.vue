@@ -5,10 +5,7 @@
             <BasicButton :label="'이번 주 전체 보기'" :data-theme="'airquality'" />
         </div>
         <div class="weather-card__info-box">
-            <AirqualityTimelyWeather class="weather-card__info-box__timely-weather" />
-            <AirqualityTimelyWeather />
-            <AirqualityTimelyWeather />
-            <AirqualityTimelyWeather />
+            <AirqualityTimelyWeather v-for="data in aTimelyWeatherHpas" :key="data" :data="data" class="weather-card__info-box__timely-weather" />
         </div>
     </div>
 </template>
@@ -17,8 +14,19 @@
 import BasicButton from '~/components/atoms/BasicButton.vue';
 import AirqualityTimelyWeather from '~/components/molecules/airquality/TimelyWeather.vue';
 
+import { storeToRefs } from 'pinia';
+import { useStore } from '~/store/index';
+
 export default {
     components: { BasicButton, AirqualityTimelyWeather },
+    setup() {
+        const store = useStore();
+        store.FETCH_OPENWEATHER_API();
+
+        const { aTimelyWeatherHpas } = storeToRefs(store);
+
+        return { aTimelyWeatherHpas };
+    },
 };
 </script>
 

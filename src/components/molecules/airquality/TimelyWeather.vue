@@ -1,12 +1,31 @@
 <template>
     <div class="timely-weather">
-        <span class="timely-weather__time">8am</span>
-        <span class="timely-weather__info">매우 나쁨</span>
+        <span class="timely-weather__time">{{ Unix_timeStamp(data.time) }}</span>
+        <span class="timely-weather__info">{{ data.value }}hpa</span>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true,
+        },
+    },
+    setup() {
+        const Unix_timeStamp = (dt) => {
+            let date = new Date(dt * 1000);
+            let hour = date.getHours().toString().padStart(2, '0');
+
+            return hour.substring(-2) + '시';
+        };
+
+        return {
+            Unix_timeStamp,
+        };
+    },
+};
 </script>
 
 <style lang="scss" scoped>
